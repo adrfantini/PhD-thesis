@@ -1,15 +1,56 @@
 \chapter{Introduction}
 
 \section{Project objectives and overview}
-The aim of this Thesis, partially funded by the Allianz Insurance Company, is to produce flood risk maps over the complete Italian domain for both the present day climate and for future projections. Due to the requirements of a strictly physically-based reproducible scientific approach, a framework consisting in a model chain of three tried-and-tested models, spanning climate, hydrology, and hydraulics, was developed. This Thesis thus describes a truly inter-disciplinary approach to flood risk modeling.\\
+The aim of this Thesis, partially funded by the Allianz Insurance Company, is to produce riverine flood risk maps over the complete Italian domain for both the present day climate and for future projections. Due to the requirements of a strictly physically-based reproducible scientific approach, a framework consisting in a model chain of three tried-and-tested models, spanning climate, hydrology, and hydraulics, was developed. This Thesis thus describes a truly inter-disciplinary approach to flood risk modeling.
+
 In order to obtain a reliable representation of flood risk, model calibration and evaluation was performed using several observational datasets of precipitation, discharge and flood extent. In particular, a new gridded hourly precipitation dataset for the complete Italian territory was developed in conjunction with the University of L'Aquila. The development of such dataset represents a necessary step in the scientific process described in this Thesis since, to our knowledge, no database suitable for driving a high-resolution hourly hydrological model is currently available over Italy.\\
 
-\section{The structure of this Thesis}
+\subsection{The structure of this Thesis}
 DESCRIBE HOW IS THIS THESIS ORGANIZED
 
-\section{Floods and inundation forecast and risk: an overview}
-Floods are some of the most devastating natural disasters, with strong impacts on both the social and economic scale.
+\section{Flood hazard estimation: an overview}
+Floods are some of the most devastating natural disasters, with strong impacts on both the societal and economic scale. According to the Centre for Research on the Epidemiology of Disasters (\cite{Guha-sapir2011}), several thousand people are killed every year by floods worldwide, with an average of about 5700 deaths in the period 2006--2015 and 82.6 million people affected every year. Flood-related damages, amounting to \SI{34}[\$]{G} yearly, account for one third (\cite{MunichRE}) to one quarter (\cite{Guha-sapir2011}) of the total disaster damage claimed worldwide, with damages amounting to \SI{15.45}[\$]{G} in the USA alone in 2016. For Europe in particular, floods have caused about \SI{100}[\€]{G} in damages in the period 1986--2006 (\cite{Cea2007}); these numbers are destined to increase, despite improving flood protection infrastructures, primarily due to higher exposure (\cite{MunichRE2015}, \cite{Kron2005}) in flood-prone areas, which are on average very attractive for socio-economic activities.\\
+\cite{Jongman2012} calculated that the total exposure to flood disasters, which is reported at \$\SIrange{27}{46}{T} globally in 2010, is going to more than triple (to \$\SIrange{80}{158}{T}) in 2050.
 
-\section{The future of extreme climatological events}
+For these reasons, flood forecasting and risk estimation play a central role in protecting the population from flood-related damages both financially, via insurance policies, and physically, via water management and engineering.
+
+\subsection{Floods, flood risk, Return Period}
+According to the European Union Floods Directive a flood is defined by the \enquote{temporary covering by water of land not normally covered by water} (\cite{EUFD2007}).
+Three main types of floods are usually recognized (see \cite{Kron2005}), with each having its own characteristics:
+\begin{itemize}
+    \item[Storm surge] can occur when low pressure systems, strong winds and/or high tides combine to cause high waters in coastal areas. This type of floods is especially frequent in regions where strong cyclonic development can easily take place.
+    \item[Flash floods] are extremely fast floods that are characterized by a short timescale, usually below 6 hours. They can be caused by very strong, sudden precipitation, especially in urban areas, or by artificial events, such as dam failure.
+    \item[River floods] associated with unusually strong and persistent precipitation and snow melt, are instead characterized by a longer life cycle, up to several days. They are usually caused by the gradual increase in river discharge, up to the point where water level overtops levees or overflows river banks. The time scale of riverine floods is usually dependant on the size of the catchment This is the type of floods which will be considered by this work.
+\end{itemize}
+
+One important distinction to make is the one between flood risk and flood probability (or hazard).\\
+Risk is usually defined (see e.g. , \cite{Kron2002}, \cite{DeMoel2009}, \cite{Merz2007}) as the product of the probability of an event happening and its possible consequences. The latter factor can be further split into two different aspects: exposure and coping factor, so that:
+$$\text{RISK} = \underbrace{\text{HOW OFTEN}}_\text{RETURN PERIOD} \times \underbrace{\text{WHAT} \times \text{HOW}}_\text{CONSEQUENCES}$$
+Exposure (the "WHAT") relates to the physical and societal goods at risk; the coping factor (the "HOW") instead relates to which extent a given area is capable of dealing with the effects of a flood.\\
+While policymakers tend to focus the efforts of risk mitigation primarily towards the reduction of the latter terms, in this Thesis we are primarily concerned with flood probability (the "HOW OFTEN"), usually measured by its Return Period (or Recurrence Interval):
+$$\frac{\text{period length} + 1}{\text{number of events}}$$
+Statistically, the Return Period (RP) can be considered as the inverse of the probability that the event will occur in any year. As an example, a 100--year flood is a flood that has a probability of occurring of $1\%$ in any given year.
+
+\subsection{Methods of flood hazard estimation}
+Historically speaking, flood risk was estimated via the analysis of historical discharge and flooding records and by surveying local people; the statistical analysis of these observations can however be misleading, as extreme floods are extremely rare events and long observational periods, in excess of a few tens of years, have little chance of being available. This major limitation can be partially addressed by researching into documentary evidence of past floods (\cite{Kjeldsen2014}), but these are often equally hard to come by and can be hard to properly interpret.\\
+
+In the last decades, however, new approaches based on hydrological and hydraulical modeling emerged as viable. A general description of these methods is the following: a hydrological simulation provides discharge data for a given region or basin, which is then fed to a second model which reproduces hypothetical flood extents and, if necessary, other variables.\\
+Extreme value analysis can also be applied to the discharge output, assuming a given distribution for extreme events. This allows to extend the analysis of even short observational records to long Return Periods of 100 years or more. This process has the advantage of being very flexible, potentially requiring precipitation data instead of discharge data, which are generally less readily available. Additionally, this technique can work on virtually any domain, including ungauged ones, which opens the door for large scale analysis.\\
+
+There are downsides to this approach too: a large amount of observational data, for calibration and evaluation, is still advisable; moreover, having a model working off another's output, in a chain, can make the estimation of the uncertainty of the final output harder. One more important source of uncertainty is the generally followed assumption that nor flood defenses nor river levees and banks will fail; additionally, for heavily managed rivers, water management can prevent flooding by diverting additional water to reservoirs, other rivers, or agricultural areas.
+
+\subsection{Additional sources to integrate in this section}
+\begin{enumerate}
+    \item \cite{DeMoel2009} gives a nice overview of several methods, and a nice introduction on the current (well, 9 years ago) EU legislation. Also, a good source for the definition of "risk". <- read this again
+    \item might want to add figure 1 from DeMoel2009
+    \item
+    \item
+\end{enumerate}
+
+
+\section{The future of extreme climatological and hydrological events}
+AR5 WG1 (\cite{IPCC2013}), p134, figure 1.8 -> very nice ; see also 2.6.2, specifically 2.6.2.2
+See also 23.3.1.2. River and Pluvial Flooding and from \cite{Aalst2014}
+
 
 \section{The climatological-hydrological-hydraulical approach}
