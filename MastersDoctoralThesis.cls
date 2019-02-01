@@ -234,6 +234,7 @@
 
 \newcommand{\HRule}{\rule{.9\linewidth}{.6pt}} % New command to make the lines in the title page
 \newcommand{\decoRule}{\rule{.8\textwidth}{.4pt}} % New command for a rule to be used under figures
+\newcommand{\halfDecoRule}{\rule{.4\textwidth}{.4pt}} % New command for a rule to be used under figures
 
 \setcounter{tocdepth}{3} % The depth to which the document sections are printed to the table of contents
 \ProvideDocumentCommand{\addchaptertocentry}{ m }{%
@@ -353,25 +354,25 @@ KOMA-script documentation for details.}]{fancyhdr}
 	}%
 	{}%end alt-abstract
 }{%
-	\DeclareDocumentEnvironment{abstract}{ O{\null\vfill} }{
+	\DeclareDocumentEnvironment{abstract}{ O{\null} }{
 		\checktoopen
 		\tttypeout{\abstractname}
 		#1%added to be able to have abstract more than one page long
 		\thispagestyle{plain}
 		\begin{center}
-			{\normalsize \MakeUppercase{\univname} \par}% University name in capitals
-			\bigskip
+% 			{\normalsize \MakeUppercase{\univname} \par}% University name in capitals
+% 			\bigskip
 			{\huge\textit{\abstractname} \par}
 			\bigskip
-			{\normalsize \facname \par}% Faculty name
-			{\normalsize \deptname \par}% Department name
-			\bigskip
-			{\normalsize \degreename\par}% Degree name
-			\bigskip
-			{\normalsize\bfseries \@title \par}% Thesis title
-			\medskip
-			{\normalsize \byname{} \authorname \par}% Author name
-			\bigskip
+% 			{\normalsize \facname \par}% Faculty name
+% 			{\normalsize \deptname \par}% Department name
+% 			\bigskip
+% 			{\normalsize \degreename\par}% Degree name
+% 			\bigskip
+% 			{\normalsize\bfseries \@title \par}% Thesis title
+% 			\medskip
+% 			{\normalsize \byname{} \authorname \par}% Author name
+% 			\bigskip
 		\end{center}
 	}
 	{

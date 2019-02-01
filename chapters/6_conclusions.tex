@@ -1,0 +1,62 @@
+\chapter{Summary and outlook}\label{chp:conclusions}
+The primary aim of this PhD project was to evaluate current flood hazard in Italy and to project changes in a future scenario.
+This was accomplished through a model chain of a climate, a hydrological and a hydraulical model, using an approach similar to that already employed in the literature (see \cref{sec:future_extremes}, but tailored to be able to work for the the Italian peninsula  and the data available over this area. The final aim is  to reproduce a much finer spatial details, including as many small catchments as possible over the whole area.
+
+As part of the project, we developed and validated a first version of GRIPHO (GRidded Italian Precipitation Hourly Observations, \cref{chp:itaobs}), a new high resolution hourly gridded precipitation database over Italy, for the period 2001 to 2016.
+To our knowledge, this is the first high resolution station-based precipitation dataset covering the complete Italian territory and having a time frequency greater than daily data.
+GRIPHO shows good performance in all the tested metrics, which focused on mean and extreme precipitation. In Northern Italy, GRIPHO performs similarly to the existing daily high resolution datasets. In the South, where no such dataset previously existed, GRIPHO shows significantly finer details compared to the state of the art \SI{25}{\kilo\meter} E-OBS dataset.
+The creation of GRIPHO required a significant effort for  data cleaning and quality control.
+Some erroneous station values, however, passed through the checking procedures and need to be addressed in a future version.
+Furthermore, the validation of GRIPHO was not possible on a sub-daily timescale, due to the lack of a suitable hourly comparison dataset, and was limited to a small set of mean and extreme precipitation metrics.
+We aim to address all of these deficiencies in future works \citep[][in preparation]{Fantini2018a}.\\
+In the context of the development of GRIPHO, we performed (\cref{sec:obs_datasets}) an analysis of uncertainty in the available precipitation products over Italy, finding large variations across the different datasets.
+This analysis confirmed the need, already noted in several works \citep{Fantini2016,Prein2016,Prein2017}, for high resolution, high station density precipitation datasets, especially when considering extreme precipitation metrics.
+These findings are furhter discussed in \citet[][in preparation]{Fantini2018}.
+
+Two \SI{12}{\kilo\meter} Regional Climate Model simulations with the ICTP RegCM model were performed on the EURO-CORDEX domain, one as a perfect boundary (ERA-Interim) experiment and one driven by a GCM (HadGEM) under the RCP8.5 scenario.
+These simulations were validated over the Italian territory in terms of mean and extreme precipitation and temperature, showing good model performance and entitling us to use the model for future projections.
+In particular, the model is capable of reproducing precipitation extremes when compared with observations.
+In the scenario simulation, coherently with most literature (see \cref{sec:future_extremes}), precipitation extremes are projected to strongly increase by the end of the century, even in regions where average precipitation decreases.
+More intense extreme events, such as those evaluated by the $\textrm{R99}_{ptot}$ metric, are projected to increase more than less intense extremes ($\textrm{R95}_{ptot}$).
+
+Three simulations with the CHyM hydrological model were performed, in which the input precipitation data was provided by GRIPHO, RegCM (ERA-Interim) and RegCM (HadGEM) respectively.
+Nine separate domains, corresponding to the CHyM operational regions, were chosen and run at a resolution ranging from \SIrange{300}{900}{\meter}.
+Validation of the historical simulations (\cref{sec:results_chym}), limited to two of the nine domains (the Po basin and Central Italy) due to lack of reliable observational data, showed acceptable performance on part of the model, especially when driven by the GRIPHO observations.
+We plan to expand this validation by performing additional data cleaning and checks on the discharge datasets considered (\cref{sec:disch_obs}).\\
+The CHyM scenario simulation driven by RegCM (HadGEM) can be used to assess the impact of climate change on the mean and extreme discharge for the Italian river network.
+Being this a single scenario simulation, we are well aware of the limitations, for example, on assessing the uncertainty of the projected signal.
+Therefore, a possible future development would be to repeat the study in an ensemble context. 
+The analysis of this hydrological scenario simulation shows that by comparing the 2070--2099 timeslice with the historical (1976--2005), changes in the mean are rather mixed: discharges generally increase in autumn and winter and decrease in summer, but significant regional differences are present.
+The Alpine area, which is the water tower for the largest Italian river catchment, the Po basin, which is often flooded, shows significantly increased mean discharges, especially in the colder months.\\
+By the end of the century, the three metrics chosen for extreme discharges all indicate strong increases, in some cases up to tenfold the reference values, for both large and small basins.
+Since these metrics can be considered proxies for flood hazard, it is likely that floods are also going to increase significantly in this scenario for each of the return period examined in this thesis.
+These findings are generally in agreement with those found in the literature, however our approach provides a much finer look on smaller basins than previous works, which covered the entire European continent \citep[see e.g.][]{Alfieri2015,Alfieri2015a}.
+
+By using the calibrated output of the hydrological model, flood extent maps were created at a resolution of \SI{90}{\meter} using the hydraulic model CA2D (\cref{sec:results_flood}) and validated in a case study for the Piemonte 2016 flood.
+Good agreement between 100- and 500-year Return Period maps and the observed inundation is observed.
+Larger scale validation is limited by the lack of observations on the flooded extent in real world flood events.\\
+Preliminary flood hazard maps were produced for the present day and compared to the maps assembled by ISPRA starting from flood data from the Italian regional agencies (\cref{fig:ispra_ita_flood}).
+Similar features and extents can be found in the two products, despite the differences in the approaches employed in their creation.
+Compared to the ISPRA maps, our approach has the significant advantage of ensuring that the methodology is coherent across the whole Italian territory and, additionally, it provides a simple route to simulate future hazard.
+Currently, flood hazard maps under an RCP8.5 scenario (utilising the CHyM output analysed in this thesis) are being computed and will provide a useful tool on top of which future policies can be based.
+
+The major limitations of this approach are threefold.\\
+Firstly, the whole procedure completely ignores water management and man-made structures such as dams, dykes and canals.
+Consequently, it is likely that flood control procedures, such as floodplain reservoirs and river defences, might reduce flood hazard compared to our estimation.
+To take this factor into account on such a large scale would require significant added complexity and was not planned for this work.\\
+Secondly, the procedure described in this thesis is purposefully limited to at most 30-year timeslices: we then describe 100-year floods by extending the available data with an extreme value distribution.
+The uncertainty associated with this approach should not be easily dismissed, since it can represent a sizeable fraction of the signal. \citet{Schulz2016}, for example, have shown that using 30-year timeslices to estimate 100-year discharges can lead to an error of up to $\pm 30\%$.
+The possibility of using the whole 130 years of scenario simulation, however, is ruled out by the need to extrapolate a climate change signal between the far future and the reference period.\\
+Thirdly, all of the work carried out in this project is based on a single model chain and a single future scenario (RCP8.5).
+As highlighted by \citet{Rojas2012,Dankers2009}, who use ensemble approaches, driving different hydrological models with a set of climate models would allow a basic estimation of the uncertainty associated with this method and improve the overall reliability of the projections.
+As already noted, expanding the current methodology to at least take into account several driving RCMs might be an interesting future research path.
+Currently, simulations with the climate change mitigation scenario RCP2.6 are planned, to validate the impact of a significantly less extreme degree of climate change which represents the best case scenario of current mitigation policies.
+
+Despite these limitations, we believe that the approach and the tools described in this thesis are useful for evaluating and projecting flood hazard over Italy.
+Moreover, the methodology we followed is extremely flexible and has the potential for being applied anywhere in the world.
+In particular, tests on a European-wide \SI{1}{\kilo\meter} grid have already started, with the intent of extending the evaluation of discharge flood proxies over the whole continent.
+
+In conclusion, we developed, tested and validated a generic methodology for estimation of flood hazard in any domain where terrain and climatic information are available. The results show good agreement with the available observations.
+The procedure required a large amount of preparation, and in particular the completion of two regional climate simulations for the EURO-CORDEX domain and one scenario hydrological simulation over the entire Italian peninsula, not yet present in the literature.
+Moreover, the creation and validation of a novel high resolution hourly precipitation dataset named GRIPHO, which currently is the only dataset of this kind available over Italy, has been accomplished.
+
