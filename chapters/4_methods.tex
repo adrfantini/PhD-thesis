@@ -18,7 +18,7 @@ The precipitation data that are the main input needed to run hydrological simula
 \end{description}
 
 \Cref{sec:regcm} will detail the RCM model and simulations, while \cref{sec:chym} will describe the hydrological model of choice and its three simulations.
-\Cref{sec:3_mod_apprach} will delineate the statistical procedure used to derive the extreme discharge statistics from the discharge timeseries. Finally, \cref{sec:ca2d} will present the hydraulical model and its simulations.
+\Cref{sec:3_mod_apprach} will delineate the statistical procedure used to derive the extreme discharge statistics from the discharge timeseries. Finally, \cref{sec:ca2d} will present the hydraulic model and its simulations.
 
 
 %------------------------------------
@@ -217,23 +217,27 @@ RegCM (HadGEM)      & 1971--2099 & MARCONI & 21TB       \\ \bottomrule
 %------------------------------------
 %	CLIMA-HYDRO-HYDRA APPROACH
 %------------------------------------
-\section{The climatological-hydrological-hydraulical approach} \label{sec:3_mod_apprach}
-The flood hazard estimation method developed in this project follows the footsteps of similar approaches as illustrated in \cref{subs:flood_hazard_methods}: a hydrological model (\cref{sec:chym}), driven by observations (\cref{chp:itaobs}) or by a Regional Climate Model (\cref{sec:regcm}), reproduces discharge data over several different Italian domains and for a period of several years; these discharges are then fitted statistically to an extreme value distribution which allows to extend the simulation of extreme events to any Return Period, with decreasing accuracy as the rarity of the event increases. The typical discharge for a selected number of Return Periods for each point is then modelled via a hydraulical model ((\cref{sec:ca2d})) to produce flood extent maps. In our case, the statistical procedure is based on the work of \citet{Maione2003}, who performed a similar Flood Frequency Analysis (FFA), starting from observational data, for the Po river basin.
+\section{The climatological-hydrological-hydraulic approach} \label{sec:3_mod_apprach}
+The flood hazard estimation method developed in this project follows the footsteps of similar approaches as illustrated in \cref{subs:flood_hazard_methods}: a hydrological model (\cref{sec:chym}), driven by observations (\cref{chp:itaobs}) or by a Regional Climate Model (\cref{sec:regcm}), reproduces discharge data over several different Italian domains and for a period of several years; these discharges are then fitted statistically to an extreme value distribution which allows to extend the simulation of extreme events to any Return Period, with decreasing accuracy as the rarity of the event increases.
+The typical discharge for a selected number of Return Periods for each point is then modelled via a hydraulic model ((\cref{sec:ca2d})) to produce flood extent maps.
+In our case, the statistical procedure, studied and devised by Francesca Raffaele from the ICTP's ESP section, is based on the work of \citet{Maione2003}, who present a procedure for the construction of ``typical'' flood discharge curves (called Synthetic Design Hydrographs) for any point of a river.
+\citet{Maione2003} derive their methodology by estimating SDHs for gauged sites in the Po river basin, and extending the SDH definition to ungauged sites with a relation depending on the drained area.
+This allows for a unique, consistent methodology to be applied across the whole catchment for every river cell --- in our case, the derivation of the SDHs is performed for every CA2D ``virtual station'' (see \cref{sec:ca2d}), starting from CHyM discharge data (\cref{sec:chym}).
+In the following, the technical details and the formulae necessary to perform the calculations which result in the input data for the hydraulic model are described.
 
-In the following, the technical details and the formulae necessary to perform the calculations which result in the SDHs are described.
-The procedure was studied and devised by Francesca Raffaele from the ICTP's ESP section, who has been part of the core team in this project, based on the work of \citet{Maione2003}.
 Given any river or station point, from model or observed data, the input to the statistical analysis is the complete timeseries of discharge for that specific location. Other than this, the analysis we performed is completely independent of location, albeit a few assumptions had to be made to generalise the process.\\
 The aim is to obtain curves describing, for the given Return Period, the typical discharge timeseries of the event at that river point. These $Q_{RP}(t)$ curves will be called Synthetic Design Hydrographs (SDHs) and give the discharge ($Q$) of a typical extreme event as a function of the Return Period ($RP$) and the time ($t$).
-SDHs are required by the hydraulical model (see \cref{sec:ca2d}) to simulate flood extent.
+SDHs are required by the hydraulic model (see \cref{sec:ca2d}) to simulate flood extent.
 
 We start by defining the Flow Duration Frequency reduction curve (FDF) ($Q_D\left( RP \right)$, which is the discharge averaged over a duration $D$ (usually in hours) around the flood peak with Return Period $RP$.
+As a consequence, the instantaneous FDF ($D=0$) represents the peak flood discharge $Q_0\left( RP \right)$.
 The FDF is usually obtained from statistical analysis of historical hydrographs, but its formulation, as we shall see, can be generalised.
 
 Similarly to the work of \citet{Maione2003}, we perform with the reasonable assumption that the reduction ratio ($\varepsilon_D$), which is the ratio of the FDF and the peak flood discharge ($Q_0\left( RP \right)$), is constant for any Return Period $RP$, so that:
 \begin{equation}
   \varepsilon_D = \varepsilon_D\left( RP \right) = \frac{Q_D\left( RP \right)}{Q_0\left( RP \right)}\,,
   \end{equation} 
-as also reported by the \citet{NERC1975}.
+which means that the reduction ratio only depends on the duration $D$, as also reported by the \citet{NERC1975}.
 As in \citet{Maione2003}, when performing the calculation of the FDF around each historical flood peak, the centring of the duration window of width $D$ is chosen as to maximise the average computed discharge $Q_D$:
 \begin{equation}
   \text{FDF} = Q_D = \frac{1}{D} max \int_{t}^{t+D} Q \left(\tau \right) d\tau \,,
@@ -316,7 +320,7 @@ This procedure, as shown in the following chapters, was applied both with observ
     % from /home/afantini/places/clima-archive/flood/museodat2nc/calc_SDHs/
     \includegraphics[width=\textwidth]{figures/valid_flood/method/po_sdh}
     \decoRule
-    \caption[Synthetic Design Hydrographs for stations in the MV1 dataset]{Synthetic Design Hydrographs for the seven discharge stations in the MV1 dataset, which covers the Po river; the results are in line with \citet{Maione2003}.}
+    \caption[Synthetic Design Hydrographs for stations in the MV1 dataset]{Synthetic Design Hydrographs for the seven discharge stations in the MV1 dataset (see \cref{tab:disc_dst}), which covers the Po river; the results are in line with \citet{Maione2003}.}
     \label{fig:po_sdh}
 \end{figure}
 
@@ -324,25 +328,43 @@ This procedure, as shown in the following chapters, was applied both with observ
 %-------------------------------
 %	CA2D
 %-------------------------------
-\section{The CA2D hydraulical model}\label{sec:ca2d}
-Floodplain hydraulic simulations are modelled with a modified version of the CA2D hydraulic model \citep{Dottori2011,Dottori2010}.
-CA2D is based on the LISFLOOD-FP model \citep{Bates2005}, which has been extensively used in flood hazard mapping \citep[see e.g.][]{ThomasStevenSavage2016, Neal2011, Skinner2015}. The CA2D model uses a 2D cellular automata approach and is significantly faster than LISFLOOD-FP thanks to a number of optimisations and assumptions, which makes high-resolution simulations possible even on a large scale.
+\section{The CA2D hydraulic model}\label{sec:ca2d}
+Floodplain hydraulic simulations are modelled with a modified version of the CA2D hydraulic model, initially introduced in \citet{Dottori2010} and described and validated in great detail in \citet{Dottori2011}.
+CA2D is based on the LISFLOOD-FP model \citep{Bates2005}, a a coupled 1D/2D hydraulic model based on a raster grid which has been extensively used in flood hazard mapping \citep[see e.g.][]{ThomasStevenSavage2016, Neal2011, Skinner2015}. Instead of solving the full shallow water equations, CA2D is a reduced complexity model which uses a 2D cellular automata approach.
+It is significantly faster than LISFLOOD-FP thanks to a number of optimisations and assumptions: in particular, an inertial formulation \citep{Bates2010}
+for the computation of discharges and the use of a local adaptive timestep \citep{Zhang1994} enabled a \SI{97}{\%} reduction in computation time compared to LISFLOOD-FP \citep{Dottori2011}.
+This makes high-resolution simulations possible even on a large scale.
 The model was modified by Rita Nogherotto from the ICTP's ESP section to run in parallel, further speeding up the computation. Rita also took care of running, organising and postprocessing all of the CA2D simulations.
 The model uses as input the Synthetic Design Hydrographs created starting from CHyM-simulated discharge data using the procedure described in the previous section.
 
 A \SI{90}{\metre} resolution, corresponding to the resolution of the underlying HydroSHEDS void-filled DEM (see \cref{sec:DEM}), is selected for all simulations.
-Since CA2D cannot be run for the whole domain due to its high resolution, a large number of small scale simulations evenly spaced along the river network (\cref{fig:ca2d_fakestations}) is run in parallel for each of the nine CHyM domains (see \cref{sec:chym_riv_net,fig:chym_regions}).
+Due to its high resolution, CA2D cannot be run for the whole domain in a single simulation.
+To overcome this, a large number of small scale simulations, evenly spaced along the river network, is run in parallel for each of the nine CHyM domains (see \cref{sec:chym_riv_net,fig:chym_regions}).
 Each of these simulations includes exactly one ``virtual station'', which represents the water source.
+Each water source itself corresponds to a specific SDH (\cref{fig:example_SHD}) generated from CHyM discharge data for the corresponding river cell.
+Practical and computational considerations led to the choice of a spacing among stations varying linearly with the drained area of each point and capped between 5 and \SI{10}{\kilo\meter}.
+This resulted in a total of 5548 simulations with an extent of $\ang{0.2}\times\ang{0.2}$.
+The connection between CHyM's river network and CA2D's ``virtual stations'' is performed automatically with a nearest neighbour method, and is manually checked for accuracy.
+This approach allowed the creation of a ensemble of small, high resolution hydraulic simulation covering the complete river network over each of the nine CHyM domains, while remaining computationally feasible; \cref{fig:ca2d_fakestations,fig:ca2d_fakestations2} show example distributions and density for the  ``virtual stations''.\\
 The outputs of these small-scale simulations, once converted to netCDF, are merged together to create a large scale flood hazard map for each Return Period.
-Further details regarding the choice of DEM, the conditioning it requires and the spacing of ``virtual station'' are be provided in \citet[][in preparation]{Nogherotto2018}.
-Currently, only the simulation driven by the CHyM (GRIPHO) has been completed, with other runs driven by RegCM (ERA-Interim and HadGEM) currently ongoing.
+This implies an assumption of independence between simulations which, while strong, is necessary to this approach.
+
+Further details regarding the choice of DEM, the conditioning it requires and the spacing of ``virtual station'' are provided in \citet[][in preparation]{Nogherotto2018}.
+Currently, only the simulation driven by the CHyM (GRIPHO) has been completed, while other runs driven by RegCM (ERA-Interim and HadGEM) are currently ongoing.
 All simulations are run on the ICTP ARGO cluster.
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{figures/valid_flood/overlay_chym_locations.png}
+    \includegraphics[width=0.9\textwidth]{figures/valid_flood/overlay_chym_locations.png}
     \decoRule
     \caption[``Virtual stations'' and preliminary results of a CA2D simulations over the upper Po basin]{``Virtual stations'' (left) and preliminary flood results (right) of a CA2D test simulation performed over the upper Po basin. From \citet{Nogherotto2018}, in preparation.}
     \label{fig:ca2d_fakestations}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/valid_flood/method/Sardinia}
+    \decoRule
+    \caption[``Virtual stations'' example over the Sardinia domain]{``Virtual stations'' (red dots) over the Sardinia domain, including river network (blue lines) for major rivers.}
+    \label{fig:ca2d_fakestations2}
 \end{figure}
 
 %-------------------------------

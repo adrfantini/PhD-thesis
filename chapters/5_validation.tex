@@ -1,7 +1,7 @@
 \chapter{Results}\label{chp:results}
 This chapter will discuss the results obtained during the development of this PhD project.
-As described in the previous chapter, a cascade of three modelling tools were employed: a climate model (RegCM, \cref{sec:regcm}), a hydrological model (CHyM, \cref{sec:chym}) and a hydraulical model (CA2D, \cref{sec:ca2d}).
-The three models were applied in sequence, with the hydrological model utilising rainfall from the RCM, and the hydraulical model taking as input the discharge data processed with the procedure described in \cref{sec:3_mod_apprach}.
+As described in the previous chapter, a cascade of three modelling tools were employed: a climate model (RegCM, \cref{sec:regcm}), a hydrological model (CHyM, \cref{sec:chym}) and a hydraulic model (CA2D, \cref{sec:ca2d}).
+The three models were applied in sequence, with the hydrological model utilising rainfall from the RCM, and the hydraulic model taking as input the discharge data processed with the procedure described in \cref{sec:3_mod_apprach}.
 
 In the following, the RegCM simulations driven by ERA-Interim and HadGEM will be referred to as RegCM-ERA and RegCM-HAD respectively.
 Similarly, the CHyM simulations driven by RegCM-ERA and RegCM-HAD are called CHyM-ERA and CHyM-HAD, while the simulation driven by GRIPHO is referred to as CHyM-OBS.
@@ -325,30 +325,32 @@ The CHyM-HAD simulation, which covers the period 1975 to 2100, allows us to anal
 % perform change analysis of a possible future scenario.
 % \Cref{fig:} shows changes in the annual cycle of TODO ... they are weird???
 In \cref{fig:change_qmean_hadgem}, the change in average discharge between the two future timeslices and the reference period is shown for the nine domains used to cover the complete Italian territory.
+Average discharges obtained from the CHyM-OBS, also plotted as a reference, show good agreement with CHyM-HAD, which covers a similar period of time.
 Increases (decreases) in mean discharge are larger in the North in winter (summer), which can be directly linked to the changes in mean precipitation (\cref{fig:change_rcm_pr_mean}) and snow melt \citep{coppola2014ChahydconPobasundglowar}.
 By the end of the century, Central Italy is the only region which shows increased discharges in summer, except for the Tevere river, the main of the region.
 In autumn in the far future, discharges increase all over Italy, especially for smaller rivers.
 An exception is the Tevere, the principal river of the second largest Italian basin, which shows a negative change of about $25\%$. 
 Both increasing and decreasing signals are on average stronger in the far future compared to the near future.
-The general trends between the two periods are not linear: Sardinia, for example, shows decreased average summer discharges in the near future, but slight increases by the end of the century (despite decreasing precipitation).
+The general trends between the two periods are not linear: Sardinia, for example, shows decreased average summer discharges in the near future, but slight increases by the end of the century (despite decreasing precipitation); in autumn, average discharges increase over most of the country, despite little to no change in average precipitation. 
 % TODO how is this possible WTF?
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{figures/change_Q/Qmean_ITA_3col_pctl}
+    \includegraphics[width=\textwidth]{figures/change_Q/Qmean_ITA_4col_pctl}
     \decoRule
     \caption[Average discharge change in CHyM (HadGEM)]{
-        Average discharge for the reference period (left column) and percentage change for the near future (central column) and the far future (right column), over the four seasons. To avoid overlaps, only the basins completely enclosed in each of the nine simulation domains are plotted. Only the major rivers are shown for each basin.
+        Average discharge for CHyM-OBS and CHyM-HAD (leftmost two columns) and percentage change for near and far future (leftmost two columns), over the four seasons. To avoid overlaps and overplotting, only the basins completely enclosed in each of the nine simulation domains are plotted and only the major rivers are shown for each basin.
     } \label{fig:change_qmean_hadgem}
 \end{figure}
 
 As a basic metric for high discharge, the mean annual maximum discharge ($Q_{ymax}$) over the three selected 30-year periods is displayed in \cref{fig:change_qymax_hadgem}.
+Compared to CHyM-OBS, in agreement with the RegCM results, CHyM-HAD for the reference period shows generally good performance, despite a slight underestimation for winter in the Po plain.
 By the end of the century, maximum yearly discharges increase in winter and autumn across most of Italy, with changes often above $+50\%$.
 In summer and spring, results are more mixed and depend on the region: central Italy shows an increase in summer (including the Tevere river basin, contrarily to mean discharge), while areas such as Sardinia and the Alps show a slight decrease in the same season.
 Once again changes by the end of the century are higher than in the near future and, in some cases (e.g. Central Italy), of opposite sign.
-These changes can in general be linked to extreme precipitation changes in the driving model (\cref{fig:change_rcm_pr_r95}), which show similar patterns across the domain.\\
+These changes can in general be linked to extreme precipitation changes in the driving model (\cref{fig:change_rcm_pr_r95}), which show similar patterns across the domain; there are however some notable differences, such as the marked decrease in 2070-2099 summer $Q_{ymax}$ over Sardinia (not mirrored by $\textrm{R95}_{ptot}$).\\
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{figures/change_Q/Qymax_ITA_3col_pctl}
+    \includegraphics[width=\textwidth]{figures/change_Q/Qymax_ITA_4col_pctl}
     \decoRule
     \caption[Mean annual maximum discharge change in CHyM (HadGEM)]{
         Like \cref{fig:change_qmean_hadgem}, but for $Q_{ymax}$, the mean annual maximum discharge.
@@ -356,23 +358,25 @@ These changes can in general be linked to extreme precipitation changes in the d
 \end{figure}
 \Cref{fig:change_qrp_hadgem} shows $Q_{RP}$: it is the peak projected discharge for the 2, 10, 20, 50 and 100 year Return Periods, calculated using the methodology described in \cref{sec:3_mod_apprach}.
 Compared to the mean annual maximum discharge, this metric is more representative of extreme events, but it can only be computed on a yearly basis.
-In the near future, changes appear to be relatively small and mixed across the domain; for the end of the century, instead, this metric shows a consistent increase in extreme discharges over the whole Italian territory, with only some areas (mainly in the southern region of Calabria) showing a slight decrease.
+These extreme discharges are in line with CHyM-OBS or even somewhat underestimated for some rivers.
+As for projections, in the near future changes appear to be relatively small and mixed across the domain; for the end of the century, instead, this metric shows a consistent increase in extreme discharges over the whole Italian territory, with only some areas (mainly in the southern region of Calabria) showing a slight decrease.
 Some large rivers, such as the Po and the Tevere, show more than doubled values of the peak 100-year discharge, compared to 1976--2005.
 The change results for the five Return Periods are almost identical, which is to be expected given the fact that the discharges are calculated using the same constant parameters, only changing the RP.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/change_Q/QRP_ITA_3col_pctl}
+    \includegraphics[width=0.8\textwidth]{figures/change_Q/QRP_ITA_4col_pctl}
     \decoRule
     \caption[Mean annual maximum discharge change in CHyM (HadGEM)]{
         Like \cref{fig:change_qmean_hadgem}, but for $Q_{RP}$, the peak projected discharge, calculated for 5 Return Periods: 2, 10, 20, 50 and 100 years.
     } \label{fig:change_qrp_hadgem}
 \end{figure}
 Another standard metric for extreme discharge is the number of times the discharge is higher than a chosen threshold. This Peak Over Threshold (POT) metric is calculated using as reference the peak projected discharge for different Return Periods (the same as in $Q_{RP}$,  \cref{fig:change_qrp_hadgem}).
-The maps of POT change (\cref{fig:change_pot_hadgem}) clearly show a strong increase in the frequency of future events, for each return period.
+Contrarily to the previous extreme metrics, this metric shows an overestimation on the side of CHyM-HAD compared to CHyM-OBS (\cref{fig:change_pot_hadgem}), which prompts for caution with drawing conclusions from this data.
+The maps of POT change clearly show a strong increase in the frequency of future events, for each return period.
 In particular, for the end of the century, the less frequent the event (more severe floods, higher Return Period), the higher the frequency increase: the frequency of exceedance of 100-year thresholds increases more than $500\%$ and up to tenfold over most of the domain, while the POT of 2-year events increases, on average, by a factor 2 or 3.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/change_Q/POT_ITA_3col_pctl}
+    \includegraphics[width=0.8\textwidth]{figures/change_Q/POT_ITA_4col_pctl}
     \decoRule
     \caption[Peak over threshold change in CHyM (HadGEM)]{
         Like \cref{fig:change_qmean_hadgem}, but for number (and \% change) of Peak Over Threshold events above the relative $Q_{RP}$ (see \cref{fig:change_qrp_hadgem}) for 5 Return Periods: 2, 10, 20, 50 and 100 years.
@@ -388,7 +392,7 @@ This simulation then unambiguously shows a strong increase in flood hazard towar
 \section{Flood hazard maps for the Italian territory}\label{sec:results_flood}
 The CA2D hydraulic model is able to reproduce flood extent and water depth for the complete Italian domain, as described in \cref{sec:ca2d}.
 Due to the lack of observational data, validation of CA2D against real inundation events is challenging.
-As an example of validation, a case study was analysed by Rita Nogherotto from the ICTP Earth System Physic group: in November 2016, when heavy rainfall over the north-west of Italy, and in particular in the regions of Piemonte and Liguria, led to increase of hydrometric levels over the danger thresholds for several rivers in the Po basin, such as the Bormida and the Tanaro.
+As an example of validation, a case study was analysed by Rita Nogherotto from the ICTP Earth System Physic group: in November 2016 heavy rainfall over the north-west of Italy, and in particular in the regions of Piemonte and Liguria, led to increase of hydrometric levels over the danger thresholds for several rivers in the Po basin, such as the Bormida and the Tanaro.
 The event caused vast damages and one casualty\footnote{For additional information about the event, refer to \url{https://it.wikipedia.org/wiki/Alluvione_del_Piemonte_del_2016} (in Italian)}. 
 When utilising discharge data from CHyM-OBS, CA2D is able to reproduce with remarkable similarity the flooded extent as reported by COSMO-SkyMed satellite images, in \cref{fig:valid_casestudy}.
 The actual flooded extents (top panels) are within the boundaries of the 100- and 500-year Return Period extents as simulated with the model (bottom panels) in both the areas considered.

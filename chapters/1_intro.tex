@@ -6,10 +6,35 @@
 \section{Project objectives and overview}
 The aim of this thesis is to assess flood hazard over the complete Italian domain for both the present day climate and for future projections. Due to the requirements of a strictly physically-based reproducible scientific approach, a framework consisting in a model chain of three tried-and-tested models, spanning climate, hydrology, and hydraulics, was developed. This thesis thus describes a truly inter-disciplinary approach to flood hazard modelling. The work described here was partially funded by the Allianz Insurance Company.
 
-In order to obtain a reliable representation of flood hazard, model calibration and evaluation were performed using several observational datasets of precipitation, discharge and flood extent. In particular, a new gridded hourly precipitation dataset for the complete Italian territory was developed in conjunction with the University of L'Aquila, Italy. The development of such dataset represents an important step in the scientific process described in this thesis since, to our knowledge, no database suitable for driving a high-resolution hourly hydrological model is currently available over Italy. Both flood proxies consisting in several extreme discharge metrics and simulated floods extents will be analysed in this work.
+In order to obtain a reliable representation of flood hazard, model calibration and evaluation were performed using several observational datasets of precipitation, discharge and flood extent. In particular, a new gridded hourly precipitation dataset for the complete Italian territory was developed in conjunction with the University of L'Aquila, Italy. The development of such dataset represents an important step in the scientific process described in this thesis since, to our knowledge, no database suitable for driving a high-resolution hourly hydrological model is currently available over Italy. Both flood proxies consisting in several extreme discharge metrics and simulated floods extents are analysed in this work.
+
+\subsection{Scientific significance and research questions}\label{sec:research_questions}
+The impact of climate change on atmospheric Essential Climate Variables (ECVs), such as temperature and precipitation, has been subject of several studies in the last decades, and is relatively well-known.
+As detailed in \cref{sec:future_extremes}, under a business-as-usual scenario, precipitation extremes are generally projected to increase both in frequency and in intensity.
+However, how changes in atmospheric ECVs affect derived variables is less clear, especially for extreme events at small spatial and temporal scales.
+Flooding, in particular, is one archetype of extreme event which might be significantly affected by changes in climate patterns, due to the simple fact that increased extreme precipitation leads to increased flooding; the link between precipitation and floods is not necessarily linear: due to the complexities derived from snow accumulation and melting, underground water flow and local channel characteristics, the change in flood hazard might differ in pattern and intensity compared to that of extreme precipitation.
+Assessing the spatial and temporal change patterns of these two variables is a research topic of great interest, and one which requires high resolution data to be able to decode the signal at small spatial scales.
+In this work, we look not only at how these factors change in a climate scenario, but also at how they are related to each other.
+
+Flooding strongly affects society and economy, both on the large and small scales, and flood hazard is increasingly taken into consideration by policymakers  and companies, which require up-to-date historical data and future projections.
+For this reason, the interest in flood hazard studies has been soaring in the last decades, and recently a new model chain approach has emerged as viable, at least on the continental scale.
+Here, climate, hydrological and hydraulic models work in concert to provide physically-based flood hazard projections for possible future scenarios.
+In this regard, several studies improved the knowledge of the projected changes over large basins, especially over Europe.
+These works, however, rarely offer enough insight over future small scale flood hazards over specific areas, and studies focusing on changes for any individual European country are quite rare.
+In fact, the model chain approach is rarely employed for high resolution analysis due to the sheer size of the domains and the resulting computing challenges.
+By focusing on a single country, however, computational requirements become manageable, which allows the testing of this methodology at unprecedented spatial and temporal scales.\\
+Therefore, this thesis focuses on one specific region (Italy) with the aim of providing high resolution, usable information to companies and policymakers alike.
+In this sense, this work represents an advancement in large scale flood hazard projection compared to previous studies, being the first application of the model chain approach over a single European country.
+
+In short, the main research questions addressed by this work are:
+\begin{itemize}
+    \item Can a model chain of climate, hydrological and hydraulic models reliably reproduce flood hazard at high resolution over the selected domain?
+    \item How does climate change impact flood hazard over Italy, in terms of intensity, frequency and seasonality?
+    \item Is the change in flood hazard linearly connected with changes in precipitation extremes, or are the spatial or temporal patterns different between the two?
+\end{itemize}
 
 \subsection{The structure of this thesis}
-This thesis is structured in 6 chapters.
+This thesis is structured in \ref{chp:conclusions} chapters.
 In the upcoming sections of the current chapter a general overview on flood risk, flood hazard and flood modelling is given, including a discussion on the current knowledge of flood hazard in the study domain.
 \Cref{chp:obs} details the different types of observational dataset used through this project, with particular attention to precipitation.
 A new hourly precipitation dataset over Italy, named GRIPHO, is presented in \cref{chp:itaobs}, where it is described and validated.
@@ -48,8 +73,8 @@ Flood hazard can be assessed via proxies, such as the recurrence of extreme disc
 
 Historically, flood hazard was estimated via the analysis of historical discharge and flooding records and by surveying local people. The statistical analysis of these observations can however be misleading, as extreme floods are exceptionally rare events and long observational periods, in excess of a few tens of years, have little chance of being available. This major limitation can be partially addressed by researching into documentary evidence of past floods \citep{Kjeldsen2014, Reed2002}, but these are often equally hard to come by and can be hard to properly interpret.
 
-In the last decades, however, new approaches based on hydrological and hydraulical modelling emerged as viable \citep{Alfieri2014, DeMoel2009, Bell2007, Serinaldi2017, Paprotny2017, Demir2016, Rojas2012, , Dankers2009, Feyen2012, Merz2014, Barredo2007, VanAlphen2009, Veijalainen2010}. In this multimodel approach, a hydrological simulation, driven by precipitation data, generates discharge data for a given region or basin for a long period of time; this discharge  is then fed to a second hydrodynamic model which reproduces hypothetical flood extents and, if necessary, other variables such as flood depth or flow speed.
-In order to extend the analysis to long Return Periods, extreme value analysis can be applied to the simulated discharge, assuming a given distribution for extreme events and performing a fit over the available data. This multi-model approach has the advantage of being very flexible, potentially requiring precipitation data instead of discharge data, which are generally less readily available. Additionally, this technique can work on virtually any domain including ungauged ones, if precipitation data from large scale datasets is used as input. This opens the door for multi-regional and cross-catchment analysis.
+In the last decades, however, new approaches based on hydrological and hydraulic modelling emerged as viable \citep{Alfieri2014, DeMoel2009, Bell2007, Serinaldi2017, Paprotny2017, Demir2016, Rojas2012, , Dankers2009, Feyen2012, Merz2014, Barredo2007, VanAlphen2009, Veijalainen2010}. In this model chain approach, a hydrological simulation, driven by precipitation data, generates discharge data for a given region or basin for a long period of time; this discharge  is then fed to a second hydrodynamic model which reproduces hypothetical flood extents and, if necessary, other variables such as flood depth or flow speed.
+In order to extend the analysis to long Return Periods, extreme value analysis can be applied to the simulated discharge, assuming a given distribution for extreme events and performing a fit over the available data. This model chain approach has the advantage of being very flexible, potentially requiring precipitation data instead of discharge data, which are generally less readily available. Additionally, this technique can work on virtually any domain including ungauged ones, if precipitation data from large scale datasets is used as input. This opens the door for multi-regional and cross-catchment analysis.
 
 Of course, there are downsides to this approach too: a large amount of observational data, for calibration and evaluation, is still advisable (the larger, the better); moreover, having a model working off another model's output, in what constitutes an offline model chain, can make the estimation of the uncertainty of the final output more difficult.\\
 As stated, uncertainties arise from the driving data, from the model configurations and choice, and from insufficiently precise description of the physical phenomena object of investigation. In the case of flood hazard estimation, one more important source of uncertainty is the generally followed assumption that flood defences and river levees and banks will not fail; additionally, for heavily managed rivers, water management can reduce flood hazard by diverting additional water to reservoirs \citep[][see e.g. ]{Huntjens2010, Alfieri2016}, other rivers, or agricultural areas. As is the case for most similar studies \citep[][see e.g.]{Alfieri2014}, water management was not taken into consideration in this work.
@@ -66,7 +91,7 @@ As highlighted in the previous section, the generic term \enquote{flood maps} ca
 \item Quantitative flood risk, showing information on direct economic damage
 \end{enumerate}
 
-In this thesis work the focus is on producing Return Period and flood depth maps, which are the variables usually necessary for modelling flood impact and thus required by policymakers, modellers and insurance companies. Extreme discharge and precipitation will also be analysed as proxies for floods.
+In this thesis work the focus is on producing Return Period and flood depth maps, which are the variables usually necessary for modelling flood impact and thus required by policymakers, modellers and insurance companies. Extreme discharge and precipitation are also analysed as proxies for floods.
 
 \begin{figure}
     \centering
@@ -134,7 +159,10 @@ As can be expected, the changes generally show strong seasonality, with increase
     \label{fig:future_flood}
 \end{figure}
 
-\section{Flood hazard in the study domain}
+%------------------------------------
+%	FLOOD HAZARD IN ITALY
+%------------------------------------
+\section{Flood hazard in the study domain} \label{sec:flood_hazard_ita}
 This thesis focuses its attention specifically on flood hazard in Italy. The region is frequently affected by severe inundation events, with 584 reported casualties, 50 missing, 462 injured and 168254 evacuees in the last 50 years due to flooding only \citep[excluding flood-induced landslides, see][]{IRPI2018}. Observed heavy precipitation trends in the last century indicate a general decrease of total precipitation, but an increase in extreme events \citep{Brunetti2004, Brunetti2001, Brunetti2004a}. Recent flood events with several casualties, caused primarily by the inundation include floods in
 Polesine (1951, 84 casualties),
 Salerno (1954, 318),
