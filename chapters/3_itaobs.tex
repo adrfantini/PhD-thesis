@@ -275,7 +275,7 @@ This results in a dataset which can have both spatial and temporal empty zones, 
 The interpolation was separately carried out in parallel for each time slice, with no information crossing time boundaries.
 \Cref{fig:gridVSnogrid_pdf} shows the Probability Density Function of GRIPHO in its gridded and non-gridded (raw) form: as expected, gridding introduces a general smoothing of precipitation extremes. The effect is however quite small, thanks to the choice of interpolation method, and most extreme events are retained.
 Compared to most of the techniques seen in \cref{sec:gridding_techniques}, this approach is much faster but also more basic; improving this method will certainly be the goal of future research.
-Additional information on the interpolation methodology, including tests with different algorithms, are presented in \citep[][in preparation]{Fantini2018a}.
+Additional information on the interpolation methodology, including tests with different algorithms, are presented in \citep[][in preparation]{Fantini2019a}.
 
 \begin{figure}
     \centering
@@ -297,7 +297,7 @@ An additional GRIPHO version, containing a variable optimised for reading along 
 %------------------------------------
 \section{Validation against other precipitation datasets}\label{sec:valid_itaobs}
 In this section, the new gridded hourly precipitation product presented in this chapter is validated against some of the datasets available over the Italian territory (see \cref{sec:obs_datasets,tab:prec_obs_ita}).
-Only a basic validation is presented herein, further analysis is described in detail in \citet[][in preparation]{Fantini2018a}.
+Only a basic validation is presented herein, further analysis is described in detail in \citet[][in preparation]{Fantini2019a}.
 
 \subsection{Methodology and metrics}
 Due to the lack of a suitable reference hourly dataset, the validation is carried out solely on the daily scale; analysis on the hourly scale is planned as a future research path.
@@ -387,7 +387,7 @@ The high spatial and temporal resolution are superior to those of E-OBS, which i
 Thanks to the high station density, reproduction of extreme events is improved, in particular if compared to E-OBS.
 The  GRIPHO dataset has shown sufficient quality for it to be used to drive the hydrological model CHyM, which is at the core of this thesis work, and to validate the climate simulations performed by RegCM, as detailed in the upcoming chapters.
 
-Availability and additional details on this dataset will be made available in an upcoming paper \citep[][in preparation]{Fantini2018a}, where
+Availability and additional details on this dataset will be made available in an upcoming paper \citep[][in preparation]{Fantini2019a}, where
 \begin{itemize}
     \item the unexpected behaviour of extreme events in Sicily and Abruzzo will be fixed by applying a further manual conditioning step;
     \item an analysis of hourly precipitation will be included;
