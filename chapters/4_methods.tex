@@ -181,6 +181,7 @@ The configuration for the DEM smoothing and connection algorithms was tuned by a
 Especially in the case of the Po plain, which is extremely flat and is simulated at a coarse resolution, the final reconstructed river network is within the limitations imposed by the resolution of the DEM.
 Additional tests at an higher model resolution did slightly improve the river representation, but also increased the computational cost significantly.\\
 Discharge stations (see \cref{sec:disch_obs}) have been manually repositioned on the simulated river network to insure proper comparison between model and observations.
+\afterpage{\clearpage}
 \begin{sidewaysfigure}
     \centering
     \includegraphics[width=\textheight]{figures/chym_routing_po}
@@ -222,7 +223,7 @@ The flood hazard estimation method developed in this project follows the footste
 The typical discharge for a selected number of Return Periods for each point is then modelled via a hydraulic model ((\cref{sec:ca2d})) to produce flood extent maps.
 In our case, the statistical procedure, studied and devised by Francesca Raffaele from the ICTP's ESP section, is based on the work of \citet{Maione2003}, who present a procedure for the construction of ``typical'' flood discharge curves (called Synthetic Design Hydrographs) for any point of a river.
 \citet{Maione2003} derive their methodology by estimating SDHs for gauged sites in the Po river basin, and extending the SDH definition to ungauged sites with a relation depending on the drained area.
-This allows for a unique, consistent methodology to be applied across the whole catchment for every river cell --- in our case, the derivation of the SDHs is performed for every CA2D ``virtual station'' (see \cref{sec:ca2d}), starting from CHyM discharge data (\cref{sec:chym}).
+This allows for a unique, consistent methodology to be applied across the whole catchment for every river cell --- in our case, the derivation of the SDHs is performed for selected locations along the river network (see \cref{sec:ca2d}), starting from CHyM discharge data (\cref{sec:chym}).
 In the following, the technical details and the formulae necessary to perform the calculations which result in the input data for the hydraulic model are described.
 
 Given any river or station point, from model or observed data, the input to the statistical analysis is the complete timeseries of discharge for that specific location. Other than this, the analysis we performed is completely independent of location, albeit a few assumptions had to be made to generalise the process.\\

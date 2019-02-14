@@ -90,6 +90,9 @@ dvipsnames % load default colors
 \usepackage{multirow} % multi row tables
 \usepackage{bigdelim} % for big braces in tables (https://tex.stackexchange.com/a/129797/66561)
 
+\usepackage{afterpage} % for using \afterpage{\clearpage} before sidewaysfigures, to prevent them from going to the end:
+%https://latex.org/forum/viewtopic.php?t=5903
+
 \usepackage[skip=-2pt, position=top, labelfont=normalfont]{subcaption} % multiple figures in one
 %skip=-2pt reduces space between caption and subfigure
 %singlelinecheck=false, justification=raggedright move the caption to the left
